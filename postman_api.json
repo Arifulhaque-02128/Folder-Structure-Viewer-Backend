@@ -1,0 +1,107 @@
+{
+  "info": {
+    "name": "Folder Structure API",
+    "description": "API endpoints for Folder Structure Application",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Folders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/folders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "folders"]
+        },
+        "description": "Retrieve all folders in tree structure"
+      },
+      "response": []
+    },
+    {
+      "name": "Create Root Folder",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"New Folder\",\n  \"parentId\": null\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/folders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "folders"]
+        },
+        "description": "Create a new folder. Set parentId to null for root level, or provide a folder ID to create a subfolder"
+      },
+      "response": []
+    },
+    {
+      "name": "Create Subfolder",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Subfolder\",\n  \"parentId\": \"PARENT_FOLDER_ID\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/folders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "folders"]
+        },
+        "description": "Create a subfolder inside an existing folder. Replace PARENT_FOLDER_ID with actual folder ID"
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Folder",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/folders/FOLDER_ID",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "folders", "FOLDER_ID"]
+        },
+        "description": "Delete a folder and all its children. Replace FOLDER_ID with actual folder ID. Note: Root folder cannot be deleted"
+      },
+      "response": []
+    },
+    {
+      "name": "Server Checking",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/check",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["check"]
+        },
+        "description": "Check if the server is running"
+      },
+      "response": []
+    }
+  ]
+}
